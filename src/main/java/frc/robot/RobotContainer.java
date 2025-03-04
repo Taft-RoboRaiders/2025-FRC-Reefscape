@@ -42,8 +42,7 @@ public class RobotContainer {
   private final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
   
   private final AlgaeSubsystem m_algaeSubsystem = new AlgaeSubsystem();
-  private final GrabAlgaeCommand m_grabAlgaeCommand = new GrabAlgaeCommand(m_algaeSubsystem);
-  private final StopAlgaeCommand m_stopAlgaeCommand = new StopAlgaeCommand(m_algaeSubsystem);
+
 
   private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
   private final CommandXboxController m_driverController2 = new CommandXboxController(OperatorConstants.kDriverControllerPort2);
@@ -53,8 +52,8 @@ public class RobotContainer {
    */
 
      SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
-                                                        () -> m_driverController.getLeftY(),
-                                                        () -> m_driverController.getLeftX() )
+                                                        () -> m_driverController.getLeftY() * .4,
+                                                        () -> m_driverController.getLeftX() * .4)
                                                       .withControllerRotationAxis(m_driverController::getRightX)
                                                       .deadband(OperatorConstants.deadband)
                                                       .scaleTranslation(0.5)
@@ -118,7 +117,7 @@ public class RobotContainer {
     */
 
 
-    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setGoal(-0.1));
+    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setGoal(-0.05));
     
 
     configureBindings();
@@ -141,28 +140,31 @@ public class RobotContainer {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
     }
  
-    //m_driverController2.button(0).whileTrue(m_grabAlgaeCommand);  // Button 0 for GrabAlgaeCommand
-    //m_driverController2.button(0).whileFalse(m_stopAlgaeCommand);  // Button 0 for StopAlgaeCommand
+  m_driverController2.button(6).whileTrue( new GrabAlgaeCommand(m_algaeSubsystem));  // Button 0 for GrabAlgaeCommand
+  m_driverController2.button(6).whileFalse(new StopAlgaeCommand(m_algaeSubsystem));  // Button 0 for StopAlgaeCommand
 
-    m_driverController2.button(5).whileTrue(new ScoreCoralCommand(m_coralSubsystem,true)); 
-    m_driverController2.button(4).whileTrue(new ScoreCoralCommand(m_coralSubsystem,false)); 
-    
-    m_driverController2.button(4).whileFalse(new StopCoralCommand(m_coralSubsystem)).and
+  m_driverController2.button(5).whileTrue(new ScoreCoralCommand(m_coralSubsystem,true)); 
+  m_driverController2.button(4).whileTrue(new ScoreCoralCommand(m_coralSubsystem,false)); 
+
+  m_driverController2.button(4).whileFalse(new StopCoralCommand(m_coralSubsystem)).and
   (m_driverController2.button(5).whileFalse(new StopCoralCommand(m_coralSubsystem)));  
 
-  m_driverController2.button(1).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.15));
+  m_driverController2.button(1).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.175));
   m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315));
-  m_driverController2.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(1));
-  m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(0));
-  m_driverController.button(1).whileTrue(driveFieldOrientedDirectAngleKeyboard);
+  m_driverController2.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635));
+  m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(-0.05));
+  //m_driverController.button(1).whileTrue(driveFieldOrientedDirectAngleKeyboard);
+  
   }
   
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
+
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     return drivebase.getAutonomousCommand("MID");

@@ -69,7 +69,14 @@ public class CoralSubsystem extends SubsystemBase {
 
     public void scoreL1() {
         mState = IntakeState.SCORE;
-        setSpeed(Constants.Coral_Algae_Constants.kL1Speed);
+        double fullSpeed = Constants.Coral_Algae_Constants.kL1Speed;
+        double halfSpeed = fullSpeed / 4.0;
+    
+        // Set the left motor to the full speed
+        m_LeftMotor.set(fullSpeed);
+    
+        // Set the right motor to half speed
+        m_RightMotor.set(-halfSpeed); // Assuming right motor should be reversed as in the original `setSpeed` method
     }
 
     public void scoreL24() {

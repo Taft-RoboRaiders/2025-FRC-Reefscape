@@ -48,11 +48,11 @@ public final class Constants {
 
   //Need to change all the constants later
   public static class ElevatorConstants{
-    public static final double kElevatorKp = 25;
+    public static final double kElevatorKp = 40;
     public static final double kElevatorKi = 0;
     public static final double kElevatorKd = 0;
-    public static final double kMaxVelocity = Meters.of(0.7).per(Second).in(MetersPerSecond);
-    public static final double kMaxAcceleration = Meters.of(0.3).per(Second).per(Second).in(MetersPerSecondPerSecond);
+    public static final double kMaxVelocity = Meters.of(1.4).per(Second).in(MetersPerSecond);
+    public static final double kMaxAcceleration = Meters.of(0.8).per(Second).per(Second).in(MetersPerSecondPerSecond);
     public static final double kElevatorkS = 0.02;
     public static final double kElevatorkG = 0.9;
     public static final double kElevatorkV = 3.8;
