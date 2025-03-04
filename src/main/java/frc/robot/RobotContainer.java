@@ -100,11 +100,11 @@ public class RobotContainer {
   
   public RobotContainer() {
     DriverStation.silenceJoystickConnectionWarning(true);
-    NamedCommands.registerCommand("test", Commands.print("I EXIST"));
-   /*  NamedCommands.registerCommand("Elevator L4",  new ElevatorSubsystem().setElevatorHeight(1) );
-    NamedCommands.registerCommand("Elevator L1",  new ElevatorSubsystem().setElevatorHeight(0.2) );
-    NamedCommands.registerCommand("Elevator L3",  new ElevatorSubsystem().setElevatorHeight(0.5) );
-    NamedCommands.registerCommand("Elevator stow",  new ElevatorSubsystem().setElevatorHeight(0) );
+    /*NamedCommands.registerCommand("test", Commands.print("I EXIST"));
+    NamedCommands.registerCommand("Elevator L4",  new ElevatorSubsystem().setElevatorHeight(.635) );
+    NamedCommands.registerCommand("Elevator L1",  new ElevatorSubsystem().setElevatorHeight(0.175) );
+    NamedCommands.registerCommand("Elevator L3",  new ElevatorSubsystem().setElevatorHeight(0.315) );
+    NamedCommands.registerCommand("Elevator stow",  new ElevatorSubsystem().setElevatorHeight(-0.05) );
     NamedCommands.registerCommand("Intake Coral", new IntakeCommand(m_coralSubsystem));
     NamedCommands.registerCommand("Reverse Coral", new ReverseCommand(m_coralSubsystem));
     NamedCommands.registerCommand("Stop coral", new StopCoralCommand(m_coralSubsystem));
@@ -144,13 +144,13 @@ public class RobotContainer {
   m_driverController2.button(6).whileFalse(new StopAlgaeCommand(m_algaeSubsystem));  // Button 0 for StopAlgaeCommand
 
   m_driverController2.button(5).whileTrue(new ScoreCoralCommand(m_coralSubsystem,true)); 
-  m_driverController2.button(4).whileTrue(new ScoreCoralCommand(m_coralSubsystem,false)); 
+  m_driverController2.button(1).whileTrue(new ScoreCoralCommand(m_coralSubsystem,false)); 
 
-  m_driverController2.button(4).whileFalse(new StopCoralCommand(m_coralSubsystem)).and
+  m_driverController2.button(1).whileFalse(new StopCoralCommand(m_coralSubsystem)).and
   (m_driverController2.button(5).whileFalse(new StopCoralCommand(m_coralSubsystem)));  
 
-  m_driverController2.button(1).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.175));
-  m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315));
+  m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.175));
+  m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315));
   m_driverController2.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635));
   m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(-0.05));
   //m_driverController.button(1).whileTrue(driveFieldOrientedDirectAngleKeyboard);
