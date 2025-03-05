@@ -14,7 +14,7 @@ public class GrabAlgaeCommand extends Command {
 
     @Override
     public void initialize() {
-        algaeSubsystem.grabAlgae();  // Call grabAlgae method from AlgaeSubsystem
+      //  algaeSubsystem.grabAlgae();  // Call grabAlgae method from AlgaeSubsystem
     }
 
     @Override

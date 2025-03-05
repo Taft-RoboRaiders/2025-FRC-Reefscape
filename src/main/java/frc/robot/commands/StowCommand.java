@@ -14,7 +14,7 @@ public class StowCommand extends Command {
 
     @Override
     public void initialize() {
-        algaeSubsystem.stow();  // Call stow method from AlgaeSubsystem
+        // algaeSubsystem.stow();  // Call stow method from AlgaeSubsystem
     }
 
     @Override
