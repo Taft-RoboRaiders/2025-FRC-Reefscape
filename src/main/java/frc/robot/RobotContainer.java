@@ -20,6 +20,7 @@ import swervelib.SwerveInputStream;
 
 import com.pathplanner.lib.auto.NamedCommands;
 
+import au.grapplerobotics.CanBridge;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -52,9 +53,10 @@ public class RobotContainer {
    */
 
      SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
-                                                        () -> m_driverController.getLeftY() * .7,
-                                                        () -> m_driverController.getLeftX() * .7)
+                                                        () -> m_driverController.getLeftY() * .5,
+                                                        () -> m_driverController.getLeftX() * .5)
                                                       .withControllerRotationAxis(m_driverController::getRightX)
+                                                      .scaleRotation(0.5)
                                                       .deadband(OperatorConstants.deadband)
                                                       .scaleTranslation(0.5)
                                                       .allianceRelativeControl(true);
@@ -116,11 +118,26 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score high", new ScoreCoralCommand(m_coralSubsystem, true));
     */
 
+    CanBridge.runTCP();
 
-    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setGoal(-0.05));
+    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.hold());
+    // m_driverController.a().whileTrue(m_elevatorSubsystem.runSysIdRoutine());
+   // m_driverController.x().whileTrue(m_elevatorSubsystem.setPower(-0.1));
+   // m_driverController.y().whileTrue(m_elevatorSubsystem.setPower(0.1));
+
+    m_driverController2.x().whileTrue(m_elevatorSubsystem.CoralL4().repeatedly());  // L4
+    m_driverController2.b().whileTrue(m_elevatorSubsystem.CoralL3().repeatedly());  // L3
+    m_driverController2.a().whileTrue(m_elevatorSubsystem.CoralL2().repeatedly());  // L2
+    m_driverController2.y().whileTrue(m_elevatorSubsystem.CoralL1().repeatedly());  // L1
+
+    m_driverController2.leftBumper().whileTrue(m_elevatorSubsystem.AlgaeL23().repeatedly());  // L1
+    m_driverController2.rightBumper().whileTrue(m_elevatorSubsystem.AlgaeL34().repeatedly());  // L1
     
 
-    configureBindings();
+
+    
+
+    // configureBindings();
 
     //drivebase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     SmartDashboard.putData(CommandScheduler.getInstance());

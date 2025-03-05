@@ -36,8 +36,7 @@ public class CoralSubsystem extends SubsystemBase {
         // Laser sensor configuration
         try {
             m_LaserCAN.setRangingMode(LaserCan.RangingMode.SHORT);
-            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(8, 8, 16, 16));
-            m_LaserCAN.setTimingBudget(LaserCan.TimingBudget.TIMING_BUDGET_33MS);
+            m_LaserCAN.setTimingBudget(LaserCan.TimingBudget.TIMING_BUDGET_20MS);
         } catch (Exception e) {
             System.out.println("Laser configuration failed: " + e.getMessage());
         }

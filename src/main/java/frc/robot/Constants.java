@@ -48,23 +48,23 @@ public final class Constants {
 
   //Need to change all the constants later
   public static class ElevatorConstants{
-    public static final double kElevatorKp = 40;
+    public static final double kElevatorKp = 9.7382;
     public static final double kElevatorKi = 0;
-    public static final double kElevatorKd = 0;
-    public static final double kMaxVelocity = Meters.of(1.4).per(Second).in(MetersPerSecond);
-    public static final double kMaxAcceleration = Meters.of(0.8).per(Second).per(Second).in(MetersPerSecondPerSecond);
-    public static final double kElevatorkS = 0.02;
-    public static final double kElevatorkG = 0.9;
-    public static final double kElevatorkV = 3.8;
-    public static final double kElevatorkA = 0.17;
+    public static final double kElevatorKd = 2.0471;
+    public static final double kMaxVelocity = Meters.of(0.6).per(Second).in(MetersPerSecond);
+    public static final double kMaxAcceleration = Meters.of(0.6).per(Second).per(Second).in(MetersPerSecondPerSecond);
+    public static final double kElevatorkS = 0.13557;
+    public static final double kElevatorkV = 10.517;
+    public static final double kElevatorkA = 0.18635;
+    public static final double kElevatorkG = 0.61846;
     public static final double kElevatorRampRate = 0.1;
     public static final double kElevatorGearing = 12;
     public static final double kElevatorSproketTeeth = 22;
     public static final double kElevatorPitch = Units.inchesToMeters(0.25);
     public static final double kElevatorCarriageMass = Units.lbsToKilograms(16);
     public static final double kElevatorDrumRadius = (kElevatorSproketTeeth * kElevatorPitch) / (2 *Math.PI);
-    public static final double kElevatorMinHeightMeters = Units.inchesToMeters(0);
-    public static final double kElevatorMaxHeightMeters = Units.inchesToMeters(30);
+    public static final double kElevatorMinHeightMeters = Units.inchesToMeters(3);
+    public static final double kElevatorMaxHeightMeters = 0.60;
     public static final Distance kMinElevatorHeight      = Meters.of(kElevatorMinHeightMeters);
     public static final Distance kMaxElevatorHeight      = Meters.of(kElevatorMaxHeightMeters);
     public static final double   kElevatorAllowableError = Units.inchesToMeters(0.005); 

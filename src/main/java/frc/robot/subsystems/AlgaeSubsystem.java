@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -17,6 +18,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 import frc.robot.Constants;
 import frc.robot.Constants.ElevatorConstants;
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -165,5 +167,31 @@ public class AlgaeSubsystem extends SubsystemBase {
           mPeriodicIO.wrist_target_angle = Constants.Coral_Algae_Constants.kGroundIntakeAngle;
           mPeriodicIO.intake_power = Constants.Coral_Algae_Constants.kGroundIntakeSpeed;
           mPeriodicIO.state = IntakeState.GROUND;
+      }
+
+       public Command setAngleGoal(double goal)
+  {
+    return startRun(()->{mWristPIDController.reset(getWristAngle());},() -> reachAngleGoal(goal));
+  }
+
+   public void reachAngleGoal(double goal)
+  {
+    double voltsOut = MathUtil.clamp(
+        mWristPIDController.calculate(getWristAngle(), goal) +
+        mWristFeedForward.calculateWithVelocities(getVelocityMetersPerSecond(),
+                                              mWristPIDController.getSetpoint().velocity),
+        -12,
+        12); // 7 is the max voltage to send out.
+    PivotMotor.setVoltage(voltsOut);
+  }
+
+  public double getVelocityMetersPerSecond()
+  {
+    return ((mWristAbsEncoder.getDistance() / 60) / ElevatorConstants.kElevatorGearing) *
+           (2 * Math.PI * ElevatorConstants.kElevatorDrumRadius);
+  }
+  
+  public Command Stow(){
+return 
       }
 }
