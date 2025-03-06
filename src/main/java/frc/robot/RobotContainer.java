@@ -12,6 +12,7 @@ import frc.robot.commands.StopAlgaeCommand;
 import frc.robot.commands.ScoreCoralCommand;
 import frc.robot.commands.StopCoralCommand;
 import frc.robot.commands.StowCommand;
+import frc.robot.subsystems.AlgaeIntakeSubsystem;
 import frc.robot.subsystems.AlgaeSubsystem;
 import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -43,6 +44,7 @@ public class RobotContainer {
   private final ElevatorSubsystem m_elevatorSubsystem = new ElevatorSubsystem();
   
   private final AlgaeSubsystem m_algaeSubsystem = new AlgaeSubsystem();
+  private final AlgaeIntakeSubsystem m_algaeIntakeSubsystem = new AlgaeIntakeSubsystem();
 
 
   private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -121,7 +123,7 @@ public class RobotContainer {
     CanBridge.runTCP();
 
 
-    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.hold());
+    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setElevatorHeight(-0.05));
     m_algaeSubsystem.setDefaultCommand(m_algaeSubsystem.setPower(0));
     // m_driverController.a().whileTrue(m_elevatorSubsystem.runSysIdRoutine());
    // m_driverController.x().whileTrue(m_elevatorSubsystem.setPower(-0.1));
@@ -140,7 +142,7 @@ public class RobotContainer {
     m_driverController2.rightBumper().whileTrue(m_elevatorSubsystem.AlgaeL34().repeatedly());  // L1 
    }
 
-   boolean armTesting = true;
+   boolean armTesting = false;
    if(armTesting)
    {
     m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setGoal(0.3));
@@ -158,7 +160,7 @@ public class RobotContainer {
 
     
 
-    // configureBindings();
+    configureBindings();
 
     //drivebase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     SmartDashboard.putData(CommandScheduler.getInstance());
@@ -181,7 +183,13 @@ public class RobotContainer {
   m_driverController2.button(6).whileTrue( new GrabAlgaeCommand(m_algaeSubsystem));  // Button 0 for GrabAlgaeCommand
   m_driverController2.button(6).whileFalse(new StopAlgaeCommand(m_algaeSubsystem));  // Button 0 for StopAlgaeCommand
 
-  m_driverController2.button(5).whileTrue(new ScoreCoralCommand(m_coralSubsystem,true)); 
+  m_driverController2.button(7).whileTrue(m_algaeIntakeSubsystem.takeAlgae());
+  m_driverController2.button(7).whileFalse(m_algaeIntakeSubsystem.stopIntake());
+
+  m_driverController2.button(8).whileTrue(m_algaeIntakeSubsystem.scoreAlgae());
+  m_driverController2.button(8).whileFalse(m_algaeIntakeSubsystem.stopIntake());
+
+  m_driverController2.button(5).whileTrue(new ScoreCoralCommand(m_coralSubsystem,true));
   m_driverController2.button(1).whileTrue(new ScoreCoralCommand(m_coralSubsystem,false)); 
 
   m_driverController2.button(1).whileFalse(new StopCoralCommand(m_coralSubsystem)).and
@@ -190,7 +198,7 @@ public class RobotContainer {
   m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.175));
   m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315));
   m_driverController2.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635));
-  m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(-0.05));
+  //m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(-0.05));
   //m_driverController.button(1).whileTrue(driveFieldOrientedDirectAngleKeyboard);
   
   }
