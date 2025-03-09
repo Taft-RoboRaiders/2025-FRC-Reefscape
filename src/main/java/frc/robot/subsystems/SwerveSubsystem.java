@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import frc.robot.Constants.SwerveConstants;
 import java.io.File;
 import java.util.function.Supplier;
@@ -148,7 +149,7 @@ SwerveDrive  swerveDrive;
             var alliance = DriverStation.getAlliance();
             if (alliance.isPresent())
             {
-              return alliance.get() == DriverStation.Alliance.Blue;
+              return alliance.get() == DriverStation.Alliance.Red;
             }
             return false;
           },

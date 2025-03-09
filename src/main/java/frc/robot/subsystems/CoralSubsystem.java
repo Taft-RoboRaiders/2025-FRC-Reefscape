@@ -83,6 +83,11 @@ public class CoralSubsystem extends SubsystemBase {
         setSpeed(Constants.Coral_Algae_Constants.kL24Speed);
     }
 
+    public void scoreL24HalfSpeed() {
+        mState = IntakeState.SCORE;
+        setSpeed(0.1);
+    }
+
     // Stop the motors and reset state
     public void stopCoral() {
         mState = IntakeState.NONE;
