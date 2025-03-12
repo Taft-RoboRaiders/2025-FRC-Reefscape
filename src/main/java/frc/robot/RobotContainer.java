@@ -59,7 +59,7 @@ public class RobotContainer {
                                                       .scaleRotation(0.5)
                                                       .deadband(OperatorConstants.deadband)
                                                       .scaleTranslation(0.5)
-                                                      .allianceRelativeControl(true);
+                                                      .allianceRelativeControl(false);
 
   /**
    * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
@@ -168,6 +168,7 @@ public class RobotContainer {
   private void configureBindings() {
     Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
     Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
+    Command driveRobotOrientedAngularVelocity = drivebase.drive(driveAngularVelocity);
     SmartDashboard.putData("Side View", Constants.sideView);
 
     if (RobotBase.isSimulation())
@@ -175,7 +176,7 @@ public class RobotContainer {
       drivebase.setDefaultCommand(driveFieldOrientedDirectAngleKeyboard);
     } else
     {
-      drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
+      drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
     }
  
   m_driverController2.button(6).whileTrue( new GrabAlgaeCommand(m_algaeSubsystem));  // Button 0 for GrabAlgaeCommand
