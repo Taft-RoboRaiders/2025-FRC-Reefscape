@@ -186,6 +186,11 @@ public void driveFieldOriented(ChassisSpeeds velocity) {
 swerveDrive.driveFieldOriented(velocity);
 }
 
+
+  public Command drive(Supplier<ChassisSpeeds> velocity){
+  return run(() -> {
+    swerveDrive.drive(velocity.get());
+  });
 public Command driveFieldOriented(Supplier<ChassisSpeeds> velocity){
   return run(() -> {
     swerveDrive.driveFieldOriented(velocity.get());
