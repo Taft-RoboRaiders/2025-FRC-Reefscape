@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import frc.robot.Constants.SwerveConstants;
 import java.io.File;
 import java.util.function.Supplier;
@@ -58,6 +59,7 @@ SwerveDrive  swerveDrive;
     swerveDrive.setModuleEncoderAutoSynchronize(false, 1);
     swerveDrive.setCosineCompensator(false);
     setupPathPlanner();
+    //RobotModeTriggers.teleop().onFalse(initialDrive());
 
   }
 
@@ -148,7 +150,7 @@ SwerveDrive  swerveDrive;
             var alliance = DriverStation.getAlliance();
             if (alliance.isPresent())
             {
-              return alliance.get() == DriverStation.Alliance.Blue;
+              return alliance.get() == DriverStation.Alliance.Red;
             }
             return false;
           },
@@ -186,16 +188,23 @@ public void driveFieldOriented(ChassisSpeeds velocity) {
 swerveDrive.driveFieldOriented(velocity);
 }
 
-
-  public Command drive(Supplier<ChassisSpeeds> velocity){
-  return run(() -> {
-    swerveDrive.drive(velocity.get());
+public Command drive(Supplier<ChassisSpeeds> velocity){
+  return run(() -> {swerveDrive.drive(velocity.get());
   });
+}
 public Command driveFieldOriented(Supplier<ChassisSpeeds> velocity){
   return run(() -> {
     swerveDrive.driveFieldOriented(velocity.get());
     swerveDrive.getMaximumChassisAngularVelocity();
     swerveDrive.getMaximumChassisVelocity();
   });
+}
+
+public void zeroGyro(){
+  swerveDrive.zeroGyro();
+}
+
+public Command initialDrive(){
+  return run(() -> zeroGyro());
 }
 }

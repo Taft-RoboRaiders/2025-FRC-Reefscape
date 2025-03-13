@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
@@ -83,6 +84,11 @@ public class CoralSubsystem extends SubsystemBase {
         setSpeed(Constants.Coral_Algae_Constants.kL24Speed);
     }
 
+    public void scoreL24HalfSpeed() {
+        mState = IntakeState.SCORE;
+        setSpeed(0.1);
+    }
+
     // Stop the motors and reset state
     public void stopCoral() {
         mState = IntakeState.NONE;
@@ -103,6 +109,10 @@ public class CoralSubsystem extends SubsystemBase {
     public void outputTelemetry() {
         SmartDashboard.putNumber("Laser/Distance", m_LaserCAN.getMeasurement().distance_mm);
         SmartDashboard.putBoolean("Laser/hasCoral", isHoldingCoralViaLaserCAN());
+    }
+
+    public Command coralStop(){
+        return run(() -> stopCoral());
     }
 
     

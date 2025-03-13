@@ -209,7 +209,7 @@ public final class Constants {
     public static final int kMaxIntakeCurrent = 20;
 
     public static final double kAlgaeIntakeSpeed = 0.6;
-    public static final double kEjectSpeed = -0.3;
+    public static final double kEjectSpeed = -0.6;
     public static final double kGroundIntakeSpeed = -0.3;
     
     public static final double kWristOffset = 141.0;

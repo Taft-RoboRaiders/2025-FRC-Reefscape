@@ -7,37 +7,31 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Score 1st coral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Elevator L4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Intake "
+            "pathName": "BLUE2"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 0.5
+            "waitTime": 2.0
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Elevator stow"
+            "name": "ScoreL1"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "Grab second coral"
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "StopCoral"
           }
         }
       ]

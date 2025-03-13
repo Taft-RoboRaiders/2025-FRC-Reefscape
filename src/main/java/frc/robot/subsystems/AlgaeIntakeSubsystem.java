@@ -30,36 +30,33 @@ private IntakeState mState = IntakeState.NONE;
     // This method will be called once per scheduler run
   }
 
-  public void setSpeed(double speed) {
-    intakeMotor.set(speed);
-  }
   
   //outtake and intake methods
-  public void algaeIntake() {
+  public void algaeIntake(double speed) {
     mState = IntakeState.INTAKE;
-    setSpeed(Constants.Coral_Algae_Constants.kAlgaeIntakeSpeed);
+    intakeMotor.set(speed);
   }
 
-  public void algaeOuttake() {
+  public void algaeOuttake(double speed) {
     mState = IntakeState.OUTTAKE;
-    setSpeed(Constants.Coral_Algae_Constants.kEjectSpeed);
+    intakeMotor.set(speed);
   }
 
   public void stopAlgaeIntake() {
     mState = IntakeState.NONE;
-    setSpeed(0.0);
+    intakeMotor.set(0);
   }
 
   public IntakeState getState() {
     return mState;
   }
 
-  public Command takeAlgae() {
-    return run(() -> algaeIntake());
+  public Command takeAlgae(double speed) {
+    return run(() -> algaeIntake(speed));
   }
 
-public Command scoreAlgae() {
-  return run(() -> algaeOuttake());
+public Command scoreAlgae(double speed) {
+  return run(() -> algaeOuttake(speed));
 }
 
 public Command stopIntake() {

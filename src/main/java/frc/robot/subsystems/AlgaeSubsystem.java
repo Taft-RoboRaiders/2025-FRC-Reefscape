@@ -248,7 +248,7 @@ public class AlgaeSubsystem extends SubsystemBase
   }
 
 
-  public void reachSetpoint(double setPointDegree)
+  /*public void reachSetpoint(double setPointDegree)
   {
     double  goalPosition = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(setPointDegree)).in(Rotations);
     double pidOutput     = m_pidController.calculate(m_encoder.getPosition(), goalPosition);
@@ -257,7 +257,7 @@ public class AlgaeSubsystem extends SubsystemBase
                         m_feedforward.calculate(setpointState.position,
                                                 setpointState.velocity)
                       );
-  }
+  }*/
 
   /**
    * Get the Angle of the Arm.
@@ -282,7 +282,7 @@ public class AlgaeSubsystem extends SubsystemBase
                                           .per(Minute));
   }
 
-  public Command setGoal(double degree)
+  /*public Command setGoal(double degree)
   {
     return run(() -> reachSetpoint(degree));
   }
@@ -323,15 +323,13 @@ public class AlgaeSubsystem extends SubsystemBase
   }
 
 
-public Command setPower(double d) {
-  return run(()->m_motor.set(d));
-}
+
 
 public double angleHold=0;
 
 public Command hold() {
   return startRun(()->{angleHold=getAngle().in(Degrees);m_pidController.reset(AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(angleHold)).in(Rotations));}, ()->{reachSetpoint(angleHold);});
-}
+}*/
 
 
 
@@ -348,4 +346,31 @@ public Command hold() {
     m_arm.close();
   }*/
 
+  public void armUp(){
+    m_motor.set(0.7);
+  }
+
+  public void armDown(){
+    m_motor.set(-0.7);
+  }
+
+  public void armStop(){
+    m_motor.set(0);
+  }
+
+  public Command moveUp(){
+    return run(() -> armUp());
+  }
+
+  public Command moveDown(){
+    return run(() -> armDown());
+  }
+
+  public Command moveStop(){
+    return run(() -> armStop());
+  }
+
+  public Command setPower(double d) {
+  return run(()->m_motor.set(d));
+}
 }
