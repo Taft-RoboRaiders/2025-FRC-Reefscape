@@ -11,15 +11,15 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "ScoreL1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "BLUE3FEED"
           }
         },
         {
@@ -29,9 +29,15 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "BLUE3CORAL2"
+          }
+        },
+        {
           "type": "named",
           "data": {
-            "name": "StopCoral"
+            "name": "ScoreL1"
           }
         }
       ]

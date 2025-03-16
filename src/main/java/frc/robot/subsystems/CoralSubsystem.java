@@ -3,6 +3,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import au.grapplerobotics.LaserCan;
@@ -114,7 +116,5 @@ public class CoralSubsystem extends SubsystemBase {
     public Command coralStop(){
         return run(() -> stopCoral());
     }
-
-    
 }
 

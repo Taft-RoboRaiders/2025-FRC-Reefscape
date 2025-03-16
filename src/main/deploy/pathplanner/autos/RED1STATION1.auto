@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RED3STATION3"
+            "pathName": "RED1STATION1"
           }
         },
         {
@@ -26,12 +26,6 @@
           "type": "wait",
           "data": {
             "waitTime": 1.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "StopCoral"
           }
         }
       ]

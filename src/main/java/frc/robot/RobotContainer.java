@@ -62,7 +62,7 @@ public class RobotContainer {
                                                           4)*-0.5)
                                                       .deadband(OperatorConstants.deadband)
                                                       .scaleTranslation(0.5)
-                                                      .allianceRelativeControl(true);
+                                                      .allianceRelativeControl(false);
 
   /**
    * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
@@ -117,8 +117,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("StopAlgae", new StopAlgaeCommand(m_algaeSubsystem));
     NamedCommands.registerCommand("StowAlgae", new StowCommand(m_algaeSubsystem));
      */
-    NamedCommands.registerCommand("ScoreL1", new ScoreCoralCommand(m_coralSubsystem, false));
-    NamedCommands.registerCommand("StopCoral", m_coralSubsystem.coralStop());
+    NamedCommands.registerCommand("ScoreL1", new ScoreCoralCommand(m_coralSubsystem, false).withTimeout(2.5));
+    //NamedCommands.registerCommand("StopCoral", m_coralSubsystem.coralStop());
     //NamedCommands.registerCommand("ElevatorL2",  new ElevatorSubsystem().setElevatorHeight(0.11) );
     //NamedCommands.registerCommand("Score high", new ScoreCoralCommand(m_coralSubsystem, true));
     
@@ -234,6 +234,6 @@ public class RobotContainer {
 
  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("BLUE1STATION1L1");
+    return drivebase.getAutonomousCommand("BLUE2");
   }
 }
