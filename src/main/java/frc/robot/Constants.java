@@ -22,17 +22,6 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.util.Color8Bit;
 import frc.robot.RobotMath.AlgaeArm;
 public final class Constants {
-
-
-  
-   
-    
- 
-
-  
-  
-
-
   // Constants for controller IDs
   public static final class OperatorConstants {
     public static final int kDriverControllerPort = 1;
@@ -176,9 +165,11 @@ public final class Constants {
 
   public static class Coral_Algae_Constants {
     public static final double kIntakeSpeed = 0.3;
-    public static final double kReverseSpeed = 0.3;
-    public static final double kL1Speed = 0.4;
-    public static final double kL24Speed = 0.4;
+    public static final double kReverseSpeed = -0.2;
+    public static final double kL1Speed = 0.75;
+    public static final double kL1SpeedLow = 0.1;
+    public static final double kL24Speed = 0.75;
+    public static final double kL24SpeedLow = 0.1;
     public static final double kIndexSpeed = 0.1;
     public static final double kSpeedDiffernce = kL1Speed * 0.5;
     public static final double kWristEncoderId = 20;
@@ -186,7 +177,6 @@ public final class Constants {
     public static final int mWristEncoderID2 = 1;
     public static final boolean mWristEncoderInvert = true;
     public static final int kMaxWristCurrent = 10;
-
     
     public static final double kWristP = 0.01;
     public static final double kWristI = 0.0;
@@ -208,8 +198,8 @@ public final class Constants {
     // INTAKE
     public static final int kMaxIntakeCurrent = 20;
 
-    public static final double kAlgaeIntakeSpeed = 0.6;
-    public static final double kEjectSpeed = -0.6;
+    public static final double kAlgaeEjectSpeed = 0.9;
+    public static final double kAlgaeIntakeSpeed = -0.9;
     public static final double kGroundIntakeSpeed = -0.3;
     
     public static final double kWristOffset = 141.0;

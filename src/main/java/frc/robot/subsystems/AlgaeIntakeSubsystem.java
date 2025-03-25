@@ -31,35 +31,35 @@ private IntakeState mState = IntakeState.NONE;
   }
 
   
-  //outtake and intake methods
-  public void algaeIntake(double speed) {
+  //Intake 
+  public void algaeIntake() {
     mState = IntakeState.INTAKE;
-    intakeMotor.set(speed);
+    intakeMotor.set(Constants.Coral_Algae_Constants.kAlgaeIntakeSpeed);
+  }
+  public Command takeAlgae() {
+    return run(() -> algaeIntake());
   }
 
-  public void algaeOuttake(double speed) {
+  //Outtake
+  public void algaeOuttake() {
     mState = IntakeState.OUTTAKE;
-    intakeMotor.set(speed);
+    intakeMotor.set(Constants.Coral_Algae_Constants.kAlgaeEjectSpeed);
+  }
+  public Command scoreAlgae() {
+    return run(() -> algaeOuttake());
   }
 
+  //stop 
   public void stopAlgaeIntake() {
     mState = IntakeState.NONE;
     intakeMotor.set(0);
   }
+  public Command stopIntake() {
+    return run(() -> stopAlgaeIntake());
+  }
 
+  //getStatus
   public IntakeState getState() {
     return mState;
   }
-
-  public Command takeAlgae(double speed) {
-    return run(() -> algaeIntake(speed));
-  }
-
-public Command scoreAlgae(double speed) {
-  return run(() -> algaeOuttake(speed));
-}
-
-public Command stopIntake() {
-  return run(() -> stopAlgaeIntake());
-}
 }

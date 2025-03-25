@@ -53,48 +53,74 @@ public class CoralSubsystem extends SubsystemBase {
         m_RightMotor.set(-speed);
     }
 
-    // Methods to control the intake and outtake
+    // Outtake
     public void intake() {
         mState = IntakeState.INTAKE;
         setSpeed(Constants.Coral_Algae_Constants.kIntakeSpeed);
     }
+    public Command coralIntake(){
+        return run(() -> intake());
+    }
 
+    //reverse outtake
     public void reverse() {
         mState = IntakeState.REVERSE;
         setSpeed(Constants.Coral_Algae_Constants.kReverseSpeed);
     }
+    public Command coralReverse(){
+        return run(() -> reverse());
+    }
 
+    //index
     public void index() {
         mState = IntakeState.INDEX;
         setSpeed(Constants.Coral_Algae_Constants.kIndexSpeed);
     }
+    public Command coralIndex(){
+        return run(() -> index());
+    }
 
+    //L1 full speed score
     public void scoreL1() {
         mState = IntakeState.SCORE;
         double fullSpeed = Constants.Coral_Algae_Constants.kL1Speed;
-        double halfSpeed = fullSpeed / 4.0;
+        double lowSpeed = Constants.Coral_Algae_Constants.kL1SpeedLow;
     
         // Set the left motor to the full speed
         m_LeftMotor.set(fullSpeed);
     
         // Set the right motor to half speed
-        m_RightMotor.set(-halfSpeed); // Assuming right motor should be reversed as in the original `setSpeed` method
+        m_RightMotor.set(-lowSpeed); // Assuming right motor should be reversed as in the original `setSpeed` method
+    }
+    public Command coralL1(){
+        return run(() -> scoreL1());
     }
 
+    //L24 full speed score
     public void scoreL24() {
         mState = IntakeState.SCORE;
         setSpeed(Constants.Coral_Algae_Constants.kL24Speed);
     }
+    public Command coralL24(){
+        return run(() -> scoreL24());
+    }
 
-    public void scoreL24HalfSpeed() {
+    //L24 score low speed score
+    public void scoreL24LowSpeed() {
         mState = IntakeState.SCORE;
-        setSpeed(0.1);
+        setSpeed(Constants.Coral_Algae_Constants.kL24SpeedLow);
+    }
+    public Command coralL24LowSpeed(){
+        return run(() -> scoreL24LowSpeed());
     }
 
     // Stop the motors and reset state
     public void stopCoral() {
         mState = IntakeState.NONE;
         setSpeed(0.0);
+    }
+    public Command coralStop(){
+        return run(() -> stopCoral());
     }
 
     // Laser sensor logic to check if the robot is holding coral
@@ -113,8 +139,5 @@ public class CoralSubsystem extends SubsystemBase {
         SmartDashboard.putBoolean("Laser/hasCoral", isHoldingCoralViaLaserCAN());
     }
 
-    public Command coralStop(){
-        return run(() -> stopCoral());
-    }
 }
 

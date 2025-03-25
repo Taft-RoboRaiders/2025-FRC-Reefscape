@@ -247,7 +247,7 @@ public class AlgaeSubsystem extends SubsystemBase
                          .andThen(m_sysIdRoutine.quasistatic(Direction.kReverse).until(atMin));
   }
 
-
+  //setPoints related stuff
   /*public void reachSetpoint(double setPointDegree)
   {
     double  goalPosition = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(setPointDegree)).in(Rotations);
@@ -346,24 +346,25 @@ public Command hold() {
     m_arm.close();
   }*/
 
-  public void armUp(){
-    m_motor.set(0.7);
+  //nonSetPoints stuff
+  public void armUp(double speed){
+    m_motor.set(speed);
   }
 
-  public void armDown(){
-    m_motor.set(-0.7);
+  public void armDown(double speed){
+    m_motor.set(speed);
   }
 
   public void armStop(){
     m_motor.set(0);
   }
 
-  public Command moveUp(){
-    return run(() -> armUp());
+  public Command moveUp(double speed){
+    return run(() -> armUp(speed));
   }
 
-  public Command moveDown(){
-    return run(() -> armDown());
+  public Command moveDown(double speed){
+    return run(() -> armDown(speed));
   }
 
   public Command moveStop(){
