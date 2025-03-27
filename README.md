@@ -1,2 +1,1 @@
-2025 FRC Reefscape Robot CRUSH's code! in San Antonio 
-Our first 3rd place! ^_^
+2025 FRC Reefscape Robot CRUSH's code!
