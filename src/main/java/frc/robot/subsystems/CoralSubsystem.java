@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
@@ -95,6 +94,20 @@ public class CoralSubsystem extends SubsystemBase {
     public Command coralL1(){
         return run(() -> scoreL1());
     }
+    
+    //for autonomous use only, command for this is in command folder
+    public void scoreAutoL1() {
+        mState = IntakeState.SCORE;
+        double fullSpeed = 0.5;
+        double lowSpeed = 0.2;
+    
+        // Set the left motor to the full speed
+        m_LeftMotor.set(fullSpeed);
+    
+        // Set the right motor to half speed
+        m_RightMotor.set(-lowSpeed); // Assuming right motor should be reversed as in the original `setSpeed` method
+    }
+
 
     //L24 full speed score
     public void scoreL24() {
@@ -103,6 +116,12 @@ public class CoralSubsystem extends SubsystemBase {
     }
     public Command coralL24(){
         return run(() -> scoreL24());
+    }
+
+    //for autonomous use only, command for this is in command folder
+    public void scoreAutoL24() {
+        mState = IntakeState.SCORE;
+        setSpeed(Constants.Coral_Algae_Constants.kL24Speed);
     }
 
     //L24 score low speed score

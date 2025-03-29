@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import frc.robot.Autonomous.Auto;
+import frc.robot.Command.coralAutoL1;
+import frc.robot.Command.coralAutoL24;
 import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.subsystems.AlgaeIntakeSubsystem;
@@ -21,7 +24,6 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 // This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -39,6 +41,11 @@ public class RobotContainer {
   
   private final AlgaeSubsystem m_algaeSubsystem = new AlgaeSubsystem();
   private final AlgaeIntakeSubsystem m_algaeIntakeSubsystem = new AlgaeIntakeSubsystem();
+
+  private final coralAutoL1 m_coralAutoL1 = new coralAutoL1(m_coralSubsystem);
+  private final coralAutoL24 m_coralAutoL24 = new coralAutoL24(m_coralSubsystem);
+
+  private final Auto m_auto = new Auto(m_elevatorSubsystem, m_coralAutoL24, m_coralAutoL1);
 
   private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
   private final CommandXboxController m_driverController2 = new CommandXboxController(OperatorConstants.kDriverControllerPort2);
@@ -109,7 +116,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("StopAlgae", new StopAlgaeCommand(m_algaeSubsystem));
     NamedCommands.registerCommand("StowAlgae", new StowCommand(m_algaeSubsystem));
      */
-    NamedCommands.registerCommand("ScoreL1", m_coralSubsystem.coralL1().withTimeout(2.5));
+    NamedCommands.registerCommand("ScoreL1", m_auto.autoL1());
+    NamedCommands.registerCommand("ScoreL2", m_auto.autoL2());
     //NamedCommands.registerCommand("StopCoral", m_coralSubsystem.coralStop());
     //NamedCommands.registerCommand("ElevatorL2",  new ElevatorSubsystem().setElevatorHeight(0.11) );
     //NamedCommands.registerCommand("Score high", new ScoreCoralCommand(m_coralSubsystem, true));
@@ -120,6 +128,8 @@ public class RobotContainer {
 
     m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setElevatorHeight(-0.05));
     m_algaeSubsystem.setDefaultCommand(m_algaeSubsystem.setPower(0));
+    m_coralSubsystem.setDefaultCommand(m_coralSubsystem.coralStop());
+    m_algaeIntakeSubsystem.setDefaultCommand(m_algaeIntakeSubsystem.stopIntake());
 
    /*boolean elevatorTesting = false;
    if(elevatorTesting)
@@ -182,9 +192,13 @@ public class RobotContainer {
   m_driverController2.button(3).whileTrue(m_coralSubsystem.coralReverse());
   m_driverController2.button(3).whileFalse(m_coralSubsystem.coralStop());
 
-  m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.11));
-  m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315));
-  m_driverController.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635));
+  m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.11).repeatedly());
+  m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315).repeatedly());
+  m_driverController.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635).repeatedly());
+
+  /*m_driverController2.button(2).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));
+  m_driverController2.button(4).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));
+  m_driverController.button(3).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));*/
   
   m_driverController2.rightTrigger(0.34).whileTrue(m_algaeSubsystem.moveDown(0.24));
   m_driverController2.rightTrigger(0.67).whileTrue(m_algaeSubsystem.moveDown(0.47));
@@ -212,8 +226,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
 
+
  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("BLUE2");
+    return drivebase.getAutonomousCommand("BLUE3STATION3CORAL2");
   }
 }
