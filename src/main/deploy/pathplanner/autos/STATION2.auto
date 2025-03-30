@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BLUE1STATION1"
+            "pathName": "STATION2"
           }
         },
         {
@@ -20,12 +20,6 @@
           "type": "named",
           "data": {
             "name": "ScoreL1"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
           }
         }
       ]

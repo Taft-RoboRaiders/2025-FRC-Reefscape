@@ -7,13 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BLUE3STATION3"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
+            "pathName": "STATION3"
           }
         },
         {
@@ -23,9 +17,27 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "STATION3FEED"
+          }
+        },
+        {
           "type": "wait",
           "data": {
             "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "STATION3CORAL2nd"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ScoreL1"
           }
         }
       ]

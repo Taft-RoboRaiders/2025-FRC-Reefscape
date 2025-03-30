@@ -7,37 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BLUE3STATION3"
+            "pathName": "STATION1"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
           }
         },
         {
           "type": "named",
           "data": {
             "name": "ScoreL1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "BLUE3FEED"
           }
         },
         {
           "type": "wait",
           "data": {
             "waitTime": 1.0
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "BLUE3CORAL2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "ScoreL1"
           }
         }
       ]

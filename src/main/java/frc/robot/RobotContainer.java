@@ -201,6 +201,6 @@ public class RobotContainer {
 
  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("BLUE3STATION3CORAL2");
+    return drivebase.getAutonomousCommand("STATION3CORAL2");
   }
 }

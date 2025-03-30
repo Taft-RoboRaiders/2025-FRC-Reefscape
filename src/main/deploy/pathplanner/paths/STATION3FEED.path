@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.6,
-        "y": 11.3
+        "x": 7.5,
+        "y": 6.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.413578659939289,
-        "y": 11.466574559792212
+        "x": 7.461534126948566,
+        "y": 6.747023028502184
       },
       "isLocked": true,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.5,
-        "y": 7.6
+        "x": 7.6,
+        "y": 11.3
       },
       "prevControl": {
-        "x": 8.429443936893973,
-        "y": 7.839837115474185
+        "x": 7.709357393810843,
+        "y": 11.075186832194152
       },
       "nextControl": null,
       "isLocked": true,
@@ -45,10 +45,10 @@
     "rotation": 119.99999999999999
   },
   "reversed": false,
-  "folder": "2CoralCommand",
+  "folder": "2CoralPath",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 119.99999999999999
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }
