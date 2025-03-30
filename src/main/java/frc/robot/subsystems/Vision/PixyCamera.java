@@ -8,6 +8,7 @@ import io.github.pseudoresonance.pixy2api.Pixy2;
 import io.github.pseudoresonance.pixy2api.links.Link;
 
 /** Add your docs here. */
+/*pixyCam methods, never used for 2025 season, but can be used for future reference */
 public class PixyCamera {
     private static Pixy2 pixy;
 

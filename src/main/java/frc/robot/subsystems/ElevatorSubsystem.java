@@ -12,8 +12,6 @@ import static edu.wpi.first.units.Units.RPM;
 import static edu.wpi.first.units.Units.Second;
 import static edu.wpi.first.units.Units.Seconds;
 import static edu.wpi.first.units.Units.Volts;
-
-import frc.robot.Setpoints;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.sim.SparkMaxSim;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -52,6 +50,7 @@ import frc.robot.Constants.ElevatorConstants;
 import frc.robot.Constants.IDConstants;
 import frc.robot.RobotMath.Elevator;
 
+//Watch YAGSL elevator programming tutorial for better understanding
 public class ElevatorSubsystem extends SubsystemBase
 {
 
@@ -343,38 +342,5 @@ private double holdPoint = 0;
 public Command hold() {
   return startRun(()->{holdPoint=getHeightMeters();m_controller.reset(holdPoint);},()->reachGoal(holdPoint));
 }
-
-public Command CoralL4()
-{
-  return setGoal(Setpoints.Elevator.Coral.L4);
-}
-
-public Command CoralL3()
-{
-  return setGoal(Setpoints.Elevator.Coral.L3);
-}
-
-public Command CoralL2()
-{
-  return setGoal(Setpoints.Elevator.Coral.L2);
-}
-
-public Command CoralL1()
-{
-  return setGoal(Setpoints.Elevator.Coral.L1);
-}
-
-public Command AlgaeL23()
-{
-  return setGoal(Setpoints.Elevator.Algae.L23);
-}
-
-public Command AlgaeL34()
-{
-  return setGoal(Setpoints.Elevator.Algae.L34);
-}
-
-
-
 
 }

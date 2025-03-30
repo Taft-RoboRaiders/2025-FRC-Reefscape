@@ -55,7 +55,8 @@ import frc.robot.Constants.AlgaeArmConstants;
 import frc.robot.Constants.IDConstants;
 import frc.robot.RobotMath.AlgaeArm;
 
-
+//Including Algae pivot setpoints and nonSetpoint methods
+//Watch YAGSL Elevator programming tutorial for better understanding
 public class AlgaeSubsystem extends SubsystemBase
 {
 
@@ -111,6 +112,7 @@ public class AlgaeSubsystem extends SubsystemBase
                                                                             Constants.AlgaeArmConstants.kAlgaeArmKa);
 
 
+  //only for sim use, don't affect testing on actual robot                                                                          
   // Simulation classes help us simulate what's going on, including gravity.
   // This arm sim represents an arm that can travel from -75 degrees (rotated down front)
   // to 255 degrees (rotated down in the back).
@@ -158,7 +160,7 @@ public class AlgaeSubsystem extends SubsystemBase
 
 
   /**
-   * Update the simulation model.
+   * Update the simulation model. Only for sim
    */
   public void simulationPeriodic()
   {
@@ -282,6 +284,8 @@ public class AlgaeSubsystem extends SubsystemBase
                                           .per(Minute));
   }
 
+  /*below are all setpoint methods */
+
   /*public Command setGoal(double degree)
   {
     return run(() -> reachSetpoint(degree));
@@ -346,7 +350,7 @@ public Command hold() {
     m_arm.close();
   }*/
 
-  //nonSetPoints stuff
+  //nonSetPoints methods
   public void armUp(double speed){
     m_motor.set(speed);
   }

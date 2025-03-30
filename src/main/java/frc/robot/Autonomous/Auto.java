@@ -7,15 +7,16 @@ package frc.robot.Autonomous;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Command.coralAutoL1;
 import frc.robot.Command.coralAutoL24;
-import frc.robot.subsystems.CoralSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 
 //file for autonomous commands
 public class Auto{
+    //define whatever file that you are gonna use the method from
     private ElevatorSubsystem elevatorSubsystem;
     private coralAutoL24 coralAutoL24;
     private coralAutoL1 coralAutoL1;
      
+    //connect subsystem, command, this, and robotContainer, adjust as more file is being used
     public Auto(ElevatorSubsystem elevator, coralAutoL24 coralL24, coralAutoL1 coralL1){
         elevatorSubsystem = elevator;
         coralAutoL24 = coralL24;

@@ -104,7 +104,7 @@ public class RobotContainer {
   
   public RobotContainer() {
     DriverStation.silenceJoystickConnectionWarning(true);
-
+    /*named commands for pathplanner */
     /*NamedCommands.registerCommand("test", Commands.print("I EXIST"));
     NamedCommands.registerCommand("ElevatorL4",  new ElevatorSubsystem().setElevatorHeight(.635) );
     
@@ -131,30 +131,6 @@ public class RobotContainer {
     m_coralSubsystem.setDefaultCommand(m_coralSubsystem.coralStop());
     m_algaeIntakeSubsystem.setDefaultCommand(m_algaeIntakeSubsystem.stopIntake());
 
-   /*boolean elevatorTesting = false;
-   if(elevatorTesting)
-   {
-    m_driverController2.x().whileTrue(m_elevatorSubsystem.CoralL4().repeatedly());  // L4
-    m_driverController2.b().whileTrue(m_elevatorSubsystem.CoralL3().repeatedly());  // L3
-    m_driverController2.a().whileTrue(m_elevatorSubsystem.CoralL2().repeatedly());  // L2
-    m_driverController2.y().whileTrue(m_elevatorSubsystem.CoralL1().repeatedly());  // L1
-
-    m_driverController2.leftBumper().whileTrue(m_elevatorSubsystem.AlgaeL23().repeatedly());  // L1
-    m_driverController2.rightBumper().whileTrue(m_elevatorSubsystem.AlgaeL34().repeatedly());  // L1 
-   }*/
-
-   /*boolean armTesting = false;
-   if(armTesting)
-   {
-    m_elevatorSubsystem.setDefaultCommand(m_elevatorSubsystem.setGoal(0.3));
-
-    m_driverController.y().whileTrue(m_algaeSubsystem.setPower(0.5));
-    m_driverController.x().whileTrue(m_algaeSubsystem.setPower(-0.5));
-    m_driverController.a().whileTrue(m_algaeSubsystem.runSysIdRoutine());
-    m_driverController.b().whileTrue(m_algaeSubsystem.setGoal(0));
-    m_driverController.leftBumper().whileTrue(m_algaeSubsystem.setGoal(45));
-    m_driverController.rightBumper().whileTrue(m_algaeSubsystem.setGoal(-45));
-    }*/
 
     configureBindings();
 
@@ -195,10 +171,6 @@ public class RobotContainer {
   m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.11).repeatedly());
   m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315).repeatedly());
   m_driverController.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635).repeatedly());
-
-  /*m_driverController2.button(2).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));
-  m_driverController2.button(4).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));
-  m_driverController.button(3).whileFalse(m_elevatorSubsystem.setElevatorHeight(-0.05));*/
   
   m_driverController2.rightTrigger(0.34).whileTrue(m_algaeSubsystem.moveDown(0.24));
   m_driverController2.rightTrigger(0.67).whileTrue(m_algaeSubsystem.moveDown(0.47));
