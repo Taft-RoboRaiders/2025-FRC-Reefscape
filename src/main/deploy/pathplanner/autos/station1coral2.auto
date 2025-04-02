@@ -11,9 +11,27 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "ScoreL1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station1feed2nd"
+          }
+        },
+        {
           "type": "wait",
           "data": {
-            "waitTime": 2.0
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station1coral2nd"
           }
         },
         {
@@ -25,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "station1feed2nd"
+            "pathName": "station1feed3rd"
           }
         }
       ]

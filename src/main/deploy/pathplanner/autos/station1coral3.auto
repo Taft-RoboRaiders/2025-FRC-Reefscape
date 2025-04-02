@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "station3"
+            "pathName": "station1"
           }
         },
         {
@@ -19,7 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "station3feed2nd"
+            "pathName": "station1feed2nd"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "station3coral2nd"
+            "pathName": "station1coral2nd"
           }
         },
         {
@@ -43,7 +43,31 @@
         {
           "type": "path",
           "data": {
-            "pathName": "station3feed3rd"
+            "pathName": "station1feed3rd"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station1coral3rd"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ScoreL1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station1feed3rd"
           }
         }
       ]

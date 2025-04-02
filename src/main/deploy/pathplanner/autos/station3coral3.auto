@@ -45,6 +45,30 @@
           "data": {
             "pathName": "station3feed3rd"
           }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station3coral3rd"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ScoreL1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "station3feed3rd"
+          }
         }
       ]
     }

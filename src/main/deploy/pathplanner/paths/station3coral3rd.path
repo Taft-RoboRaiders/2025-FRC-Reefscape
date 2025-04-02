@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 8.429443936893973,
-        "y": 7.839837115474186
+        "y": 7.839837115474187
       },
       "nextControl": null,
       "isLocked": true,
@@ -45,7 +45,7 @@
     "rotation": 119.99999999999999
   },
   "reversed": false,
-  "folder": "2CoralPath",
+  "folder": "3CoralPath",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 119.99999999999999

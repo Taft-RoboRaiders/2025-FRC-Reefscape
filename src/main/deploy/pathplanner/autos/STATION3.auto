@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "STATION3"
+            "pathName": "station3"
           }
         },
         {
@@ -23,9 +23,9 @@
           }
         },
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 1.0
+            "pathName": "station3feed2nd"
           }
         }
       ]
