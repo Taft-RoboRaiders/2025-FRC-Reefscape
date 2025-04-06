@@ -4,12 +4,9 @@
   "holonomicMode": true,
   "pathFolders": [
     "2CoralPath",
-    "3CoralPath",
-    "red"
+    "3CoralPath"
   ],
-  "autoFolders": [
-    "red"
-  ],
+  "autoFolders": [],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

@@ -343,4 +343,13 @@ public Command hold() {
   return startRun(()->{holdPoint=getHeightMeters();m_controller.reset(holdPoint);},()->reachGoal(holdPoint));
 }
 
+//solution to elevator relative encoder reading issue.
+//Don't have chance to test it at competition.
+public void encoderReset(){
+  m_encoder.setPosition(0);
+}
+public Command resetEncoder(){
+  return run(() -> encoderReset());
+}
+
 }

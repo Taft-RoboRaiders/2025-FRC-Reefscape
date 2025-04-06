@@ -153,8 +153,8 @@ public class RobotContainer {
       drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
     }
  
- // m_driverController2.button(6).whileTrue(m_algaeSubsystem.setAlgaeArmAngle(-45));  // Button 0 for GrabAlgaeCommand
-  //m_driverController2.button(6).whileFalse(m_algaeSubsystem.setAlgaeArmAngle(0));  // Button 0 for StopAlgaeCommand
+ // m_driverController2.button(6).whileTrue(m_algaeSubsystem.setAlgaeArmAngle(-45));  // algae pivot setpoints
+  //m_driverController2.button(6).whileFalse(m_algaeSubsystem.setAlgaeArmAngle(0));  // algae pivot setpoints
 
   m_driverController2.button(1).whileTrue(m_coralSubsystem.coralL1()); 
   m_driverController2.button(1).whileFalse(m_coralSubsystem.coralStop());
@@ -188,6 +188,8 @@ public class RobotContainer {
   m_driverController2.button(9).whileTrue(m_algaeIntakeSubsystem.scoreAlgae());
   m_driverController2.button(9).whileFalse(m_algaeIntakeSubsystem.stopIntake());
 
+  m_driverController.button(1).whileTrue(m_elevatorSubsystem.resetEncoder());
+
   //m_driverController2.button(0).whileTrue(m_elevatorSubsystem.setElevatorHeight(-0.05));
   //m_driverController.button(1).whileTrue(driveFieldOrientedDirectAngleKeyboard);
   }
@@ -201,6 +203,6 @@ public class RobotContainer {
 
  public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("STATION3CORAL2");
+    return drivebase.getAutonomousCommand("station2");
   }
 }
