@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Autonomous.Auto;
 import frc.robot.Command.coralAutoL1;
 import frc.robot.Command.coralAutoL24;
+import frc.robot.Command.sensorCoral;
 import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.subsystems.AlgaeIntakeSubsystem;
@@ -25,6 +26,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 // This class is where the bulk of the robot should be declared.  Since Command-based is a
 // "declarative" paradigm, very little robot logic should actually be handled in the Robot
@@ -152,6 +154,10 @@ public class RobotContainer {
     {
       drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
     }
+
+    new Trigger(() -> m_coralSubsystem.isHoldingCoralViaLaserCAN())
+    .onTrue(new sensorCoral(m_coralSubsystem))
+    .onFalse(m_coralSubsystem.coralStop());
  
  // m_driverController2.button(6).whileTrue(m_algaeSubsystem.setAlgaeArmAngle(-45));  // algae pivot setpoints
   //m_driverController2.button(6).whileFalse(m_algaeSubsystem.setAlgaeArmAngle(0));  // algae pivot setpoints

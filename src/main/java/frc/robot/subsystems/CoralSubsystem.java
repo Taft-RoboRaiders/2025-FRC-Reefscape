@@ -39,6 +39,7 @@ public class CoralSubsystem extends SubsystemBase {
         try {
             m_LaserCAN.setRangingMode(LaserCan.RangingMode.SHORT);
             m_LaserCAN.setTimingBudget(LaserCan.TimingBudget.TIMING_BUDGET_20MS);
+            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(8,10,4,4));
         } catch (Exception e) {
             System.out.println("Laser configuration failed: " + e.getMessage());
         }
@@ -144,7 +145,7 @@ public class CoralSubsystem extends SubsystemBase {
 
     // Laser sensor logic to check if the robot is holding coral
     public boolean isHoldingCoralViaLaserCAN() {
-        return m_LaserCAN.getMeasurement().distance_mm < 75.0;
+        return m_LaserCAN.getMeasurement().distance_mm <= 0;
     }
 
     // Getter for the current state
@@ -156,6 +157,10 @@ public class CoralSubsystem extends SubsystemBase {
     public void outputTelemetry() {
         SmartDashboard.putNumber("Laser/Distance", m_LaserCAN.getMeasurement().distance_mm);
         SmartDashboard.putBoolean("Laser/hasCoral", isHoldingCoralViaLaserCAN());
+    }
+
+    public void sensorIntake(){
+        setSpeed(0.1);
     }
 
 }
