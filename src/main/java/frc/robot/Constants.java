@@ -65,9 +65,9 @@ public final class Constants {
     public static final double  kAlgaeArmRampRate               = 0.5;
     public static final Angle   kAlgaeArmOffsetToHorizantalZero = Degrees.of(256);
     public static final boolean kAlgaeArmInverted               = true;
-    public static final double  kAlgaeArmMaxVelocityRPM         = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(20)).per(Second).in(RPM);
+    public static final double  kAlgaeArmMaxVelocityRPM         = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(60)).per(Second).in(RPM);
     public static final double  kAlgaeArmMaxAccelerationRPMperSecond
-                                                                = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(5)).per(Second).per(Second)
+                                                                = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(10)).per(Second).per(Second)
                                                                           .in(RPM.per(Second));
     public static final int     kAlgaeArmStallCurrentLimitAmps  = 40;
    

@@ -159,8 +159,8 @@ public class RobotContainer {
     .onTrue(new sensorCoral(m_coralSubsystem))
     .onFalse(m_coralSubsystem.coralStop());
  
- // m_driverController2.button(6).whileTrue(m_algaeSubsystem.setAlgaeArmAngle(-45));  // algae pivot setpoints
-  //m_driverController2.button(6).whileFalse(m_algaeSubsystem.setAlgaeArmAngle(0));  // algae pivot setpoints
+  m_driverController2.rightTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(75));  // algae pivot setpoints
+  m_driverController2.rightTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(110));  // algae pivot setpoints
 
   m_driverController2.button(1).whileTrue(m_coralSubsystem.coralL1()); 
   m_driverController2.button(1).whileFalse(m_coralSubsystem.coralStop());
@@ -177,7 +177,7 @@ public class RobotContainer {
   m_driverController2.button(2).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.11).repeatedly());
   m_driverController2.button(4).whileTrue(m_elevatorSubsystem.setElevatorHeight(0.315).repeatedly());
   m_driverController.button(3).whileTrue(m_elevatorSubsystem.setElevatorHeight(.635).repeatedly());
-  
+  /* 
   m_driverController2.rightTrigger(0.34).whileTrue(m_algaeSubsystem.moveDown(0.24));
   m_driverController2.rightTrigger(0.67).whileTrue(m_algaeSubsystem.moveDown(0.47));
   m_driverController2.rightTrigger(1).whileTrue(m_algaeSubsystem.moveDown(0.7));
@@ -187,7 +187,7 @@ public class RobotContainer {
   m_driverController2.leftTrigger(0.67).whileTrue(m_algaeSubsystem.moveUp(-0.47));
   m_driverController2.leftTrigger(1).whileTrue(m_algaeSubsystem.moveUp(-0.7));
   m_driverController2.leftTrigger().whileFalse(m_algaeSubsystem.moveStop());
-
+*/
   m_driverController2.button(10).whileTrue(m_algaeIntakeSubsystem.takeAlgae());
   m_driverController2.button(10).whileFalse(m_algaeIntakeSubsystem.stopIntake());
 

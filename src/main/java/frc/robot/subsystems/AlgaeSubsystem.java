@@ -250,7 +250,7 @@ public class AlgaeSubsystem extends SubsystemBase
   }
 
   //setPoints related stuff
-  /*public void reachSetpoint(double setPointDegree)
+  public void reachSetpoint(double setPointDegree)
   {
     double  goalPosition = AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(setPointDegree)).in(Rotations);
     double pidOutput     = m_pidController.calculate(m_encoder.getPosition(), goalPosition);
@@ -259,7 +259,7 @@ public class AlgaeSubsystem extends SubsystemBase
                         m_feedforward.calculate(setpointState.position,
                                                 setpointState.velocity)
                       );
-  }*/
+  }
 
   /**
    * Get the Angle of the Arm.
@@ -286,7 +286,7 @@ public class AlgaeSubsystem extends SubsystemBase
 
   /*below are all setpoint methods */
 
-  /*public Command setGoal(double degree)
+  public Command setGoal(double degree)
   {
     return run(() -> reachSetpoint(degree));
   }
@@ -333,7 +333,7 @@ public double angleHold=0;
 
 public Command hold() {
   return startRun(()->{angleHold=getAngle().in(Degrees);m_pidController.reset(AlgaeArm.convertAlgaeAngleToSensorUnits(Degrees.of(angleHold)).in(Rotations));}, ()->{reachSetpoint(angleHold);});
-}*/
+}
 
 
 
