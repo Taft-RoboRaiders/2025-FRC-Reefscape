@@ -39,7 +39,7 @@ public class CoralSubsystem extends SubsystemBase {
         try {
             m_LaserCAN.setRangingMode(LaserCan.RangingMode.SHORT);
             m_LaserCAN.setTimingBudget(LaserCan.TimingBudget.TIMING_BUDGET_20MS);
-            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(8,10,4,4));
+            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(8,15,5,15));
         } catch (Exception e) {
             System.out.println("Laser configuration failed: " + e.getMessage());
         }
@@ -160,7 +160,7 @@ public class CoralSubsystem extends SubsystemBase {
     }
 
     public void sensorIntake(){
-        setSpeed(0.1);
+        setSpeed(0.12);
     }
 
 }
