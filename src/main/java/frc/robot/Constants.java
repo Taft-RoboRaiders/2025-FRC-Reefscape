@@ -166,8 +166,8 @@ public final class Constants {
   public static class Coral_Algae_Constants {
     public static final double kIntakeSpeed = 0.3;
     public static final double kReverseSpeed = -0.2;
-    public static final double kL1Speed = 0.75;
-    public static final double kL1SpeedLow = 0.1;
+    public static final double kL1Speed = 0.5;
+    public static final double kL1SpeedLow = 0.2;
     public static final double kL24Speed = 0.65;
     public static final double kL24SpeedLow = 0.1;
     public static final double kIndexSpeed = 0.1;
