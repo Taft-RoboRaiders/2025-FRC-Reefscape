@@ -39,7 +39,7 @@ public class CoralSubsystem extends SubsystemBase {
         try {
             m_LaserCAN.setRangingMode(LaserCan.RangingMode.SHORT);
             m_LaserCAN.setTimingBudget(LaserCan.TimingBudget.TIMING_BUDGET_20MS);
-            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(8,15,5,15));
+            m_LaserCAN.setRegionOfInterest(new LaserCan.RegionOfInterest(10,8,5,15));
         } catch (Exception e) {
             System.out.println("Laser configuration failed: " + e.getMessage());
         }
@@ -54,10 +54,14 @@ public class CoralSubsystem extends SubsystemBase {
     }
 
     // Outtake
+
+ 
     public void intake() {
         mState = IntakeState.INTAKE;
-        setSpeed(Constants.Coral_Algae_Constants.kIntakeSpeed);
+        setSpeed(Constants.Coral_Algae_Constants.kIntakeSpeed1);
     }
+    
+
     public Command coralIntake(){
         return run(() -> intake());
     }
@@ -160,7 +164,38 @@ public class CoralSubsystem extends SubsystemBase {
     }
 
     public void sensorIntake(){
-        setSpeed(0.12);
+        mState = IntakeState.INTAKE;
+
+        // Step 1: Start at very fast speed
+        setSpeed(Constants.Coral_Algae_Constants.kFastIntakeSpeed); // like 0.9 or 1.0
+    
+        // Step 2: Background thread for coral detection & speed tapering
+        new Thread(() -> {
+            try {
+                // Wait a short time for object to begin moving
+                Thread.sleep(200); // You can tune this
+    
+                // Begin slow ramp down if coral is detected
+                while (!isHoldingCoralViaLaserCAN()) {
+                    // Still no coral, stay at medium speed
+                    setSpeed(Constants.Coral_Algae_Constants.kIntakeSpeed); // ~0.4
+                    Thread.sleep(50);
+                }
+    
+                // Coral detected! Now taper speed gradually
+                double speed = Constants.Coral_Algae_Constants.kIntakeSpeed;
+                while (speed > 0.12) {
+                    speed -= 0.02;
+                    setSpeed(speed);
+                    Thread.sleep(75); // smooth ramp down
+                }
+    
+                // Once speed is nice and low, optionally hold or stop
+                setSpeed(0.09); // hold speed (or 0.0 if you want to stop)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
 }
