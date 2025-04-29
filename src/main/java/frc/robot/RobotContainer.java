@@ -57,8 +57,8 @@ public class RobotContainer {
    */
 
      SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
-                                                        () -> m_driverController.getLeftY() * 0.7,
-                                                        () -> m_driverController.getLeftX() * 0.7)
+                                                        () -> m_driverController.getLeftY() * 0.65,
+                                                        () -> m_driverController.getLeftX() * 0.65)
                                                         .withControllerRotationAxis(() -> m_driverController.getRawAxis(
                                                           4)*-0.8)
                                                       .deadband(OperatorConstants.deadband)
@@ -162,7 +162,7 @@ public class RobotContainer {
   m_driverController2.rightTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(75));  // algae pivot setpoints
   m_driverController2.rightTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(110));  // algae pivot setpoints
 
-  m_driverController2.leftTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(5));
+  m_driverController2.leftTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(2));
   m_driverController2.leftTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(110));
 
   m_driverController2.button(1).whileTrue(m_coralSubsystem.coralL1()); 
