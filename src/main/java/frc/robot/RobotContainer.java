@@ -159,11 +159,11 @@ public class RobotContainer {
     .onTrue(new sensorCoral(m_coralSubsystem))
     .onFalse(m_coralSubsystem.coralStop());
  
-  m_driverController2.rightTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(75));  // algae pivot setpoints
-  m_driverController2.rightTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(110));  // algae pivot setpoints
+  m_driverController2.rightTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(63));  // algae pivot setpoints
+  m_driverController2.rightTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(105));  // algae pivot setpoints
 
   m_driverController2.leftTrigger().whileTrue(m_algaeSubsystem.setAlgaeArmAngle(2));
-  m_driverController2.leftTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(110));
+  m_driverController2.leftTrigger().whileFalse(m_algaeSubsystem.setAlgaeArmAngle(105));
 
   m_driverController2.button(1).whileTrue(m_coralSubsystem.coralL1()); 
   m_driverController2.button(1).whileFalse(m_coralSubsystem.coralStop());
