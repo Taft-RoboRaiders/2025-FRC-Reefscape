@@ -25,7 +25,7 @@ public class Auto{
 
     //L1 score auto command
     public Command autoL1(){
-        return coralAutoL1.withTimeout(1);
+        return coralAutoL1.withTimeout(2);
     }
 
     //L2 score auto command

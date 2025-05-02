@@ -103,8 +103,8 @@ public class CoralSubsystem extends SubsystemBase {
     //for autonomous use only, command for this is in command folder
     public void scoreAutoL1() {
         mState = IntakeState.SCORE;
-        double fullSpeed = 0.5;
-        double lowSpeed = 0.2;
+        double fullSpeed = 0.3;
+        double lowSpeed = 0.1;
     
         // Set the left motor to the full speed
         m_LeftMotor.set(fullSpeed);
